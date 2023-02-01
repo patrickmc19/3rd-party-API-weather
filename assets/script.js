@@ -6,20 +6,38 @@ var search = $("#search");
 var ulCity = $("#ul");
 var today = dayjs().format();
 
-function getWeather() {
+function getCoords() {
+    navigator.geolocation.getCurrentPosition(success);
     var city = $("#aside").children("input").val();
     fetch(geocodeAPI + city + "&limit=1&appid=" + weatherAPI)
         .then(function (response) {
+            console.log(response)
             return response.json();
         })
         .then(function (data) {
+            console.log(data)
             var lon = data.lon;
+            console.log(lon);
             var lat = data.lat;
-            fetch(weatherURL + "?lat=" + lat + "&lon" + lon + "&appid=" + weatherAPI);
-            // var currentTemp = data.main.temp;
-            // var currentWind = data.wind.speed;
-            // var currentHumidity = data.main.humidity;
-        })
+            console.log(lat);
+            fetch(weatherURL + "?lat=" + lat + "&lon" + lon + "&appid=" + weatherAPI)
+                .then(function (response2) {
+                    return response2.json();
+                })
+            })
+                .then (function (data2) {
+                    console.log(data2)
+                var currentTemp = data2.main.temp;
+                console.log(currentTemp)
+                var currentWind = data2.wind.speed;
+                console.log(currentWind)
+                var currentHumidity = data2.main.humidity;
+                console.log(currentHumidity)
+                })
 }
 
-$("#city-input").on("click", getWeather)
+function getWeatherData() {
+
+}
+
+$("#search").on("click", getCoords)
