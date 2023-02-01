@@ -8,3 +8,7 @@ h1 {
 #aside {
     float: left;
 }
+
+#weather-icon{
+    width: 2%;
+}
