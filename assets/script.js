@@ -2,11 +2,19 @@ var API = '127337ecf2639c829a50c27f0e45f8c0';
 var currentWeather = 'https://api.openweathermap.org/data/2.5/weather?q=';
 var fiveDayForecast = 'https://api.openweathermap.org/data/2.5/forecast?q='
 var search = $("#search");
+var searchHistory = [];
 
+// function pastSearches() {
+//     for (let i = 0; i < data.data.length; i++) {
+//         var text = localStorage.getItem("data", i)
+//         $("#aside").children("#ul").append(`<li id="old"><button id=old-search>` + text + `</button></li>`)
+
+//     }
+// }
+
+// pastSearches()
 function getWeather() {
     var city = $("#aside").children("input").val();
-    var id = "prev-cities";
-    localStorage.setItem(id, prevCity);
     fetch(fiveDayForecast + city + "&units=imperial&limit=1&appid=" + API)
         .then(function (response) {
             return response.json();
@@ -40,3 +48,9 @@ function getWeather() {
 }
 
 $("#search").on("click", getWeather)
+$("#search").click(function () {
+    var pastSearch = $("#aside").children("input").val();
+    searchHistory.push(pastSearch);
+    localStorage.setItem("data", searchHistory);
+    console.log(searchHistory);
+})
