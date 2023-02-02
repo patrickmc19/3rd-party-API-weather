@@ -32,7 +32,7 @@ THEN I am again presented with current and future conditions for that city
 
 ## Deployed URL
 
-tbd
+https://patrickmc19.github.io/3rd-party-API-weather/
 
 ## What was my motivation?
 
