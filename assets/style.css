@@ -6,9 +6,19 @@ h1 {
 }
 
 #aside {
-    float: left;
+    display: inline-block;
+    padding: 1rem;
 }
 
-#weather-icon{
-    width: 2%;
+#weather-today {
+    display: inline-block;
+    padding: 1rem;
+}
+
+#weather-icon {
+    width: 3rem;
+}
+
+#weather-icon1 {
+    width: 3rem;
 }
