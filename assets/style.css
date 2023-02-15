@@ -5,20 +5,7 @@ h1 {
     color: white;
 }
 
-#aside {
-    display: inline-block;
-    padding: 1rem;
-}
-
-#weather-today {
-    display: inline-block;
-    padding: 1rem;
-}
-
-#weather-icon {
-    width: 3rem;
-}
-
-#weather-icon1 {
-    width: 3rem;
+h4 {
+    font-weight: bolder;
+    font-size: xx-large;
 }

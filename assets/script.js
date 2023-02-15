@@ -4,17 +4,22 @@ var fiveDayForecast = 'https://api.openweathermap.org/data/2.5/forecast?q='
 var search = $("#search");
 var searchHistory = [];
 
-// function pastSearches() {
-//     for (let i = 0; i < data.data.length; i++) {
-//         var text = localStorage.getItem("data", i)
-//         $("#aside").children("#ul").append(`<li id="old"><button id=old-search>` + text + `</button></li>`)
+function searchButtons() {
+    if (localStorage.getItem("data")) {
+        searchHistory = JSON.parse(localStorage.getItem("data"));
+    }
+    $("#ul").empty();
+    for (let i = 0; i < searchHistory.length; i++) {
+        $("#aside").children("#ul").append(`<li class="list-group-item"><button class="w-100 old">` + searchHistory[i] + `</button></li>`)
+    }
+    $(".old").on("click", function () {
+        getWeather($(this).text())
+    })
+}
 
-//     }
-// }
-
-// pastSearches()
-function getWeather() {
-    var city = $("#aside").children("input").val();
+searchButtons()
+function getWeather(city) {
+    console.log(city);
     fetch(fiveDayForecast + city + "&units=imperial&limit=1&appid=" + API)
         .then(function (response) {
             return response.json();
@@ -26,9 +31,9 @@ function getWeather() {
                 $("#wind-" + i).empty();
                 $("#humidity-" + i).empty();
                 $("#day-" + i).append(`${moment(data.list[i].dt, "X").format('MM/DD/YYYY')} <img id="weather-icon1" src= "http://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png">`);
-                $("#temp-" + i).append(" " + `${data.list[i].main.temp}` + "°F");
-                $("#wind-" + i).append(" " + `${data.list[i].wind.gust}` + " MPH");
-                $("#humidity-" + i).append(" " + `${data.list[i].main.humidity}` + " %");
+                $("#temp-" + i).append("Temp: " + `${data.list[i].main.temp}` + "°F");
+                $("#wind-" + i).append("Wind: " + `${data.list[i].wind.gust}` + " MPH");
+                $("#humidity-" + i).append("Humidity: " + `${data.list[i].main.humidity}` + " %");
             }
             fetch(currentWeather + city + "&units=imperial&appid=" + API)
                 .then(function (response2) {
@@ -47,10 +52,14 @@ function getWeather() {
         })
 }
 
-$("#search").on("click", getWeather)
-$("#search").click(function () {
-    var pastSearch = $("#aside").children("input").val();
-    searchHistory.push(pastSearch);
-    localStorage.setItem("data", searchHistory);
-    console.log(searchHistory);
+$("#search").on("click", function () {
+    var pastCity = $("#city-input").val();
+    console.log(pastCity);
+    if (searchHistory.includes(pastCity) === false) {
+        searchHistory.push(pastCity);
+        localStorage.setItem("data", JSON.stringify(searchHistory));
+        console.log(searchHistory);
+        searchButtons()
+    }
+    getWeather(pastCity);
 })

@@ -15,75 +15,83 @@
   <header>
     <h1>Weather Dashboard</h1>
   </header>
-  <aside class="text-center card" style="width: 15rem;" id="aside">
-    <h2>Enter a City:</h2>
-    <input type="text-center" name="city" id="city-input" placeholder="Search here...">
-    <p class="p-2"><button class="btn btn-primary btn-sm" id="search">Search</button></p>
-    <ul id="ul"></ul>
-  </aside>
-  <section id="weather-today" class="card" style="width: 30rem;">
-    <div class="card-body">
-      <h4 id="city-name"></h4>
-      <p id="temp">Temp:</p>
-      <p id="wind">Wind:</p>
-      <p id="humidity">Humidity:</p>
+  <div class="row">
+    <div class="col-sm-2">
+      <aside class="text-center card" id="aside">
+        <h2>Enter a City:</h2>
+        <input type="text-center" name="city" id="city-input" placeholder="Search here...">
+        <p class="p-2"><button class="btn btn-primary btn-sm" id="search">Search</button></p>
+        <ul id="ul" class="list-group"></ul>
+      </aside>
     </div>
-  </section>
-  <section id="weather-outlook">
-    <h3 class="text-center">5-day Forecast:</h3>
-    <div class="row justify-content-center" id="five-day-card">
-      <div class="col-sm-2">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title" id="day-0"></h5>
-            <p class="card-text" id="temp-0">Temp:</p>
-            <p class="card-text" id="wind-0">Wind:</p>
-            <p class="card-text" id="humidity-0">Humidity:</p>
+    <div class="col-sm-10">
+      <section id="weather-today" class="text-left card">
+        <div class="card-body">
+          <h4 id="city-name"></h4>
+          <p id="temp">Temp:</p>
+          <p id="wind">Wind:</p>
+          <p id="humidity">Humidity:</p>
+        </div>
+      </section>    
+
+      <section id="weather-outlook">
+        <h3 class="text-center">5-day Forecast:</h3>
+        <div class="row justify-content-center" id="five-day-card">
+          <div class="col-sm-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" id="day-0"></h5>
+                <p class="card-text" id="temp-0">Temp:</p>
+                <p class="card-text" id="wind-0">Wind:</p>
+                <p class="card-text" id="humidity-0">Humidity:</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" id="day-8"></h5>
+                <p class="card-text" id="temp-8">Temp:</p>
+                <p class="card-text" id="wind-8">Wind:</p>
+                <p class="card-text" id="humidity-8">Humidity:</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" id="day-16"></h5>
+                <p class="card-text" id="temp-16">Temp:</p>
+                <p class="card-text" id="wind-16">Wind:</p>
+                <p class="card-text" id="humidity-16">Humidity:</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" id="day-24"></h5>
+                <p class="card-text" id="temp-24">Temp:</p>
+                <p class="card-text" id="wind-24">Wind:</p>
+                <p class="card-text" id="humidity-24">Humidity:</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" id="day-32"></h5>
+                <p class="card-text" id="temp-32">Temp:</p>
+                <p class="card-text" id="wind-32">Wind:</p>
+                <p class="card-text" id="humidity-32">Humidity:</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-2">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title" id="day-8"></h5>
-            <p class="card-text" id="temp-8">Temp:</p>
-            <p class="card-text" id="wind-8">Wind:</p>
-            <p class="card-text" id="humidity-8">Humidity:</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title" id="day-16"></h5>
-            <p class="card-text" id="temp-16">Temp:</p>
-            <p class="card-text" id="wind-16">Wind:</p>
-            <p class="card-text" id="humidity-16">Humidity:</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title" id="day-24"></h5>
-            <p class="card-text" id="temp-24">Temp:</p>
-            <p class="card-text" id="wind-24">Wind:</p>
-            <p class="card-text" id="humidity-24">Humidity:</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title" id="day-32"></h5>
-            <p class="card-text" id="temp-32">Temp:</p>
-            <p class="card-text" id="wind-32">Wind:</p>
-            <p class="card-text" id="humidity-32">Humidity:</p>
-          </div>
-        </div>
-      </div>
+      </section>
+    
     </div>
-  </section>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
